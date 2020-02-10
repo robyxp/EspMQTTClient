@@ -181,9 +181,10 @@ public:
 
   // Other
   void executeDelayed(const unsigned long delay, DelayedExecutionCallback callback);
-  bool isConnected(); // Return true if everything is connected
-  bool isWifiConnected(); // Return true if wifi is connected
-  bool isMqttConnected(); // Return true if mqtt is connected
+
+  inline bool isConnected() const { return isWifiConnected() && isMqttConnected(); }; // Return true if everything is connected
+  inline bool isWifiConnected() const { return mConnState >= 3; }; // Return true if wifi is connected
+  inline bool isMqttConnected() const { return mConnState == 5; }; // Return true if mqtt is connected
   inline bool getConnectionEstablishedCount() const { return mConnectionEstablishedCount; }; // Return the number of time onConnectionEstablished has been called since the beginning.
 
   inline void setOnConnectionEstablishedCallback(ConnectionEstablishedCallback callback) { mConnectionEstablishedCallback = callback; }; // Default to onConnectionEstablished, you might want to override this for special cases like two MQTT connections in the same sketch

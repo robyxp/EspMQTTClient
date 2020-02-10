@@ -454,28 +454,6 @@ void EspMQTTClient::executeDelayed(const unsigned long delay, DelayedExecutionCa
     Serial.printf("SYS! The list of delayed functions is full.\n");
 }
 
-bool EspMQTTClient::isConnected() // identical to isMqttConnected
-{
-  //Serial.printf("Connection State = %d\n", mConnState);
-  if (mConnState = 5) 
-    return true;
-  return false;
-}
-
-bool EspMQTTClient::isWifiConnected()
-{ 
-  if (mConnState >= 3) 
-    return true;
-  return false;
-}
-
-bool EspMQTTClient::isMqttConnected()
-{
-  if (mConnState = 5) 
-    return true;
-  return false;
-}
-
 void EspMQTTClient::brokerConnectPause(unsigned int mills)
 {
   mBrokerConnectPauseMills = mills;
