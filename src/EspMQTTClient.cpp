@@ -192,7 +192,6 @@ void EspMQTTClient::enableLastWillMessage(const char* topic, const char* message
 
 void EspMQTTClient::loop()
 {
-  unsigned long currentMillis = millis();
   // start of non-blocking connection setup section
   
   // mConnState values
@@ -216,7 +215,7 @@ void EspMQTTClient::loop()
   }
   switch (mConnState) {
 
-	// MQTT and WiFi down: start WiFi
+	  // MQTT and WiFi down: start WiFi
     case 0:
       if (mEnableSerialLogs)
         Serial.println("WiFi and MQTT down: starting WiFi");
@@ -224,7 +223,7 @@ void EspMQTTClient::loop()
       mConnState = 1;
       break;
 
-	// WiFi starting, do nothing here
+    // WiFi starting, do nothing here
     case 1:
       if (mEnableSerialLogs) {
         if (mWaitCount == 0) 
@@ -241,7 +240,7 @@ void EspMQTTClient::loop()
         }
         else if (mWaitCount % 50 == 0) 
         {
-          Serial.printf(".", mWaitCount);
+          Serial.printf(".");
         }
       }
       delay(10);
