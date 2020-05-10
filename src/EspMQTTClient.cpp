@@ -245,6 +245,7 @@ void EspMQTTClient::loop()
         Serial.println("WiFi! Lost connection.");
       
       mWifiConnected = false;
+      mMqttConnected = false;
 
       // If we handle wifi, we force disconnection to clear the last connection
       if (mWifiSsid != NULL)
